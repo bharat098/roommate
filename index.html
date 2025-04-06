@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Roommate Manager</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
@@ -16,12 +17,26 @@
       background-color: #333 !important;
       color: white !important;
     }
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      .row.g-2 > .col-md-2,
+      .row.g-2 > .col-md-3,
+      .row.g-2 > .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+      .table-responsive {
+        overflow-x: auto;
+      }
+    }
   </style>
 </head>
 <body class="container py-4">
-  <div class="d-flex justify-content-between align-items-center mb-3">
+  <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
     <h1>Roommate Manager</h1>
-    <div>
+    <div class="mt-2 mt-md-0">
       <button class="btn btn-secondary me-2" onclick="toggleDarkMode()">🌙 Dark Mode</button>
       <button class="btn btn-outline-danger" onclick="logoutUser()">Logout</button>
     </div>
@@ -77,13 +92,13 @@
     <ul id="choreList" class="list-group mt-3"></ul>
   </div>
 
-  <div class="mb-3 d-flex justify-content-between">
-    <button class="btn btn-info" onclick="downloadCSV()">📁 Export CSV</button>
-    <button class="btn btn-warning" onclick="sendReminders()">🔔 Send Reminders</button>
-    <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#historyModal">🕓 View History</button>
+  <div class="mb-3 d-flex justify-content-between flex-wrap">
+    <button class="btn btn-info mb-2" onclick="downloadCSV()">📁 Export CSV</button>
+    <button class="btn btn-warning mb-2" onclick="sendReminders()">🔔 Send Reminders</button>
+    <button class="btn btn-outline-dark mb-2" data-bs-toggle="modal" data-bs-target="#historyModal">🕓 View History</button>
   </div>
 
-  <div class="card p-3 mb-4">
+  <div class="card p-3 mb-4 table-responsive">
     <table id="expenseTable" class="table table-bordered table-striped">
       <thead>
         <tr>
